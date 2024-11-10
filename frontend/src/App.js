@@ -19,9 +19,19 @@ function App() {
             });
             setJsonSchema(response.data);
         } catch (err) {
-            setError('Invalid JSON or server error');
-            setJsonSchema(null);
-        }
+              // Display specific error message if present
+              if (err.response) {
+                  // Server responded with a status other than 2xx
+                  setError(err.response.data?.error || 'An error occurred on the server');
+              } else if (err.request) {
+                  // Request was made but no response received
+                  setError('No response from the server');
+              } else {
+                  // Something went wrong in setting up the request
+                  setError('Json structure is not correct');
+              }
+              setJsonSchema(null);
+          }
     };
 
     const handleMouseMove = (e) => {

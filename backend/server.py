@@ -6,20 +6,6 @@ import os
 app = Flask(__name__)
 
 
-# def generate_schema(data):
-#     if isinstance(data, dict):
-#         return {
-#             "type": "object",
-#             "properties": {key: generate_schema(value) for key, value in data.items()}
-#         }
-#     elif isinstance(data, list) and data:
-#         return {
-#             "type": "array",
-#             "items": generate_schema(data[0])
-#         }
-#     else:
-#         return {"type": type_map(data)}
-
 def gerenate_nested_schema(data, json_schema):
     schema_properties = json_schema.get("allOf")[0].get("properties")
     for key, value in data.items():
@@ -89,7 +75,7 @@ def type_map(value):
 def validate(data):
     if isinstance(data, dict):
         if "type" not in data or not isinstance(data.get("type"), str):
-            return False
+            raise Exception("type field must be present in json")
 
         return True
     else:
@@ -103,8 +89,7 @@ def convert_json_to_schema():
         if validate(data):
             schema = generate_schema(data)
             return Response(json.dumps(schema, sort_keys=False), mimetype='application/json'), 200
-        else:
-            raise Exception("type field must be present in json")
+
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
