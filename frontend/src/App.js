@@ -55,6 +55,20 @@ function App() {
         }
     };
 
+    const handleCopy = () => {
+        const schemaToCopy = isEditable
+            ? JSON.stringify(jsonSchema, null, 2) // Editable schema
+            : JSON.stringify(jsonSchema, null, 2); // Locked schema (same format as editable for copying)
+
+        navigator.clipboard.writeText(schemaToCopy)
+            .then(() => {
+                alert('JSON Schema copied to clipboard!');
+            })
+            .catch((err) => {
+                alert('Failed to copy schema: ' + err);
+            });
+    };
+
     return (
         <div className="app">
             <header className="header">
@@ -69,9 +83,14 @@ function App() {
                         value={jsonInput}
                         onChange={(e) => setJsonInput(e.target.value)}
                     />
-                    <button className="convert-button" onClick={handleConvert}>
-                        Convert to JSON Schema
-                    </button>
+                    <div className="button-group">
+                        <button className="convert-button" onClick={handleConvert}>
+                            Convert to JSON Schema
+                        </button>
+                        <button className="copy-button" onClick={handleCopy}>
+                            Copy Schema
+                        </button>
+                    </div>
                     {error && <p className="error-message">{error}</p>}
                 </div>
                 <div className="divider" onMouseDown={handleMouseDown}></div>
