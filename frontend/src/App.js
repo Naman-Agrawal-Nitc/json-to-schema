@@ -7,6 +7,7 @@ function App() {
     const [jsonSchema, setJsonSchema] = useState(null);
     const [error, setError] = useState(null);
     const [leftWidth, setLeftWidth] = useState(50); // initial width of left panel in percentage
+    const [isEditable, setIsEditable] = useState(false); // new state for editable mode
     const containerRef = useRef(null);
 
     const handleConvert = async () => {
@@ -41,6 +42,19 @@ function App() {
         window.addEventListener('mouseup', handleMouseUp);
     };
 
+    const handleModify = () => {
+        setIsEditable((prev) => !prev); // toggle editable state
+    };
+
+    const handleSchemaChange = (e) => {
+        const updatedSchema = e.target.value;
+        try {
+            setJsonSchema(JSON.parse(updatedSchema)); // update schema when user modifies it
+        } catch (err) {
+            setError('Invalid JSON');
+        }
+    };
+
     return (
         <div className="app">
             <header className="header">
@@ -63,9 +77,20 @@ function App() {
                 <div className="divider" onMouseDown={handleMouseDown}></div>
                 <div className="editor-section" style={{ width: `${100 - leftWidth}%` }}>
                     <h3>Generated JSON Schema</h3>
-                    <pre className="editor-output">
-                        {jsonSchema ? JSON.stringify(jsonSchema, null, 2) : 'Schema will appear here...'}
-                    </pre>
+                    <button className="modify-button" onClick={handleModify}>
+                        {isEditable ? 'Lock Schema' : 'Modify Schema'}
+                    </button>
+                    {isEditable ? (
+                        <textarea
+                            className="editor-textarea"
+                            value={JSON.stringify(jsonSchema, null, 2)}
+                            onChange={handleSchemaChange}
+                        />
+                    ) : (
+                        <pre className="editor-output">
+                            {jsonSchema ? JSON.stringify(jsonSchema, null, 2) : 'Schema will appear here...'}
+                        </pre>
+                    )}
                 </div>
             </div>
         </div>

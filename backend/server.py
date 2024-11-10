@@ -59,7 +59,10 @@ def generate_schema(data):
                        "type": {
                            "const": application_type
                        },
-                   }}
+                   },
+                   "required": [
+                       "type"
+                   ]}
                   ],
         "examples": [data]
     }
