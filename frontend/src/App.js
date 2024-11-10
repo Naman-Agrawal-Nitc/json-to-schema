@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import './App.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 function App() {
     const [jsonInput, setJsonInput] = useState('');
@@ -105,7 +106,17 @@ function App() {
                 </div>
                 <div className="divider" onMouseDown={handleMouseDown}></div>
                 <div className="editor-section" style={{ width: `${100 - leftWidth}%` }}>
-                    <h3>Generated JSON Schema</h3>
+                    <div className="heading-container">
+                        <h3>Generated JSON Schema</h3>
+                        <a
+                            href="https://fdc3.finos.org/docs/next/context/spec"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="info-icon"
+                        >
+                            <i className="fa fa-info-circle" aria-hidden="true"></i> {/* FontAwesome icon */}
+                        </a>
+                    </div>
                     <button className="modify-button" onClick={handleModify}>
                         {isEditable ? 'Lock Schema' : 'Modify Schema'}
                     </button>

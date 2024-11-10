@@ -132,3 +132,25 @@ body {
 .copy-button:hover {
     background-color: #45a049;
 }
+
+/* Add this CSS to your App.css or equivalent */
+.heading-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Style for the info icon */
+.info-icon {
+    color: green; /* Sets the color of the icon to green */
+    font-size: 20px; /* Optional: Adjusts the size of the icon */
+    text-decoration: none; /* Ensures no underline on the link */
+    display: inline-flex;
+    align-items: center;
+    gap: 5px; /* Optional: Adjusts spacing between icon and text */
+}
+
+/* Optional: Hover effect for the icon */
+.info-icon:hover {
+    color: darkgreen; /* Changes color on hover */
+}
