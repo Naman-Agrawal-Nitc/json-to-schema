@@ -1,9 +1,9 @@
 # backend/server.py
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, send_from_directory
 import json
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="build")
 
 
 def gerenate_nested_schema(data, json_schema):
@@ -92,6 +92,15 @@ def convert_json_to_schema():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
+# Serve the React app
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_react_app(path):
+    if path != "" and os.path.exists("build/" + path):
+        return send_from_directory("build", path)
+    else:
+        return send_from_directory("build", "index.html")
 
 
 if __name__ == '__main__':
