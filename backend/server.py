@@ -93,6 +93,7 @@ def convert_json_to_schema():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
+
 # Serve the React app
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
