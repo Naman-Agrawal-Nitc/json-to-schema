@@ -1,4 +1,4 @@
-# JSON to JSON-SCHEMA CONVERTER
+# JSON to JSON-SCHEMA CONVERTER (USING FLASK + REACT)
 
 This project helps in converting json format to modified json-schema format, which can be 
 used for adding projects in FDC3 application.
