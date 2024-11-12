@@ -5,7 +5,6 @@ used for adding projects in FDC3 application.
 
 ## Application URL : https://json-to-schema.onrender.com/
 
-&nbsp;
 
 Note: This application is deployed on free version of render and  free instance can spin down with inactivity, which can delay requests by 50 seconds or more.
 
@@ -24,7 +23,7 @@ Step-by-step instructions on how to set up the project locally.
     ### `pip install -r requirements.txt`
 
 - Run the application
-    ### `&#8203;python server.py`
+    ### `python server.py`
 
 ## Configurations
 -  **PORT** : The port on which the server runs (default: 5000).
