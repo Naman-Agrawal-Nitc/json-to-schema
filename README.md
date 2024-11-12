@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# JSON to JSON-SCHEMA CONVERTER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project helps in converting json format to modified json-schema format, which can be 
+used for adding projects in FDC3 application.
 
-## Available Scripts
+## Application URL : https://json-to-schema.onrender.com/
 
-In the project directory, you can run:
+&nbsp;
 
-### `npm start`
+Note: This application is deployed on free version of render and  free instance can spin down with inactivity, which can delay requests by 50 seconds or more.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+Step-by-step instructions on how to set up the project locally.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Clone the repository:
+    ### `git clone https://github.com/Naman-Agrawal-Nitc/json-to-schema.git`
 
-### `npm run build`
+- Navigate to the backend of project directory:
+    ### `cd json-to-schema/backend`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Install dependencies:
+    ### `pip install -r requirements.txt`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Run the application
+    ### `&#8203;python server.py`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Configurations
+-  **PORT** : The port on which the server runs (default: 5000).
 
-### `npm run eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- This application converts json to modified json-schema, as per FDC3 standards.
+  - The type field is mandatory.
+  - Tiltle and Description fields are added wherever needed.
+  - allOf, anyOf is added wherever needed.
+  - examples are added for every schema.
+  - "const" is used for type field.
+- The "modify" option gives the flexibility to modify the json schema as per their need.
+  - The default title and description can be modified by the user
+  - Date, time, country code, currency code can be modified according to the FDC3 standards.
+  - They can add other properties or the enum fields if required.
+  - They can add $ref fields if required
+  - They can add other fields in required category
+- The user can copy the final json-schema to anywhere outside the application.
+- The info icon will open the official documnetation for FDC3 standards.
+- The schema which is created will be in preferred or suitable order, not in random order.
+ 
+  
+## Future Features
+- The feature for converting the json-schema to typescript can be added in future changes.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Additional links
+- Example schema : https://github.com/finos/FDC3/blob/9605b158bcfc71f9077346dc3eed454225e7db4b/schemas/context/chart.schema.json
+- Documentation of schema : https://fdc3.finos.org/docs/next/context/spec
+- Tool for simple conversion: https://app.quicktype.io/
